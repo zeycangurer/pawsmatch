@@ -6,15 +6,13 @@ export default StyleSheet.create({
     width: '100%',
     marginTop: 15,
   },
-  labelText: {
+  labelName: {
     marginLeft: 20,
     fontSize: 12,
     color: palette.blue,
-    marginBottom: -10,
+    
   },
   inputArea: {
-    borderBottomColor: palette.blue,
-    borderBottomWidth: 2,
     width: '90%',
     alignSelf: 'center',
   },
