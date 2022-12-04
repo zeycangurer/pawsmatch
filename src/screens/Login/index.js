@@ -54,7 +54,7 @@ const LoginPage = connect(
             mode="text"
             style={styles.button}
             onPress={() => navigation.navigate('signin')}>
-            Create a account
+            Create an account
           </Button>
         </View>
       </View>
