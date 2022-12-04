@@ -6,16 +6,16 @@ import styles from './styles';
 //import Button from '../../components/Button';
 import Input from '../../components/Input';
 
-import { TextInput, Button } from 'react-native-paper'
+import { TextInput, Button } from 'react-native-paper';
 import { palette } from '../../theme/palette';
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from '@react-navigation/native';
 
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Text>LoginPage</Text>
@@ -23,7 +23,7 @@ const LoginPage = () => {
         <Input
           labelName='E-mail'
           secure={false}
-          type='email-address'         
+          type='email-address'
           value={email}
           onChangeText={(text) => setEmail(text)}
         />
@@ -36,7 +36,7 @@ const LoginPage = () => {
           onChangeText={(text) => setPassword(text)}
         />
         <View
-          style={{ justifyContent: 'space-between',  flexDirection:'row'}}
+          style={{justifyContent:'space-between', flexDirection:'row'}}
         >
           <Button compact onPress={() => navigation.navigate('signin')}>
             Sign Up
