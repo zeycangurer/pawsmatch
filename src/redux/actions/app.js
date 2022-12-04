@@ -1,7 +1,7 @@
 import * as constants from '../constants';
 import * as auth from '../../api/auth';
 
-export const setAcoount = (key, value) => ({
+export const setAccount = (key, value) => ({
   type: constants.SET_ACCOUNT,
   key,
   value,

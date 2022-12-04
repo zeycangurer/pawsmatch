@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {connect} from 'react-redux';
-import {signUp, setAcoount} from '../../redux/actions';
+import {signUp, setAccount} from '../../redux/actions';
 import styles from './styles';
 import {TextInput, Button} from 'react-native-paper';
 import {palette} from '../../theme/palette';
@@ -26,7 +26,7 @@ const SigninPage = connect(
           activeOutlineColor={palette.blue}
           label="E-mail"
           value={app.email}
-          onChangeText={d => dispatch(setAcoount('email', d))}
+          onChangeText={d => dispatch(setAccount('email', d))}
         />
         <TextInput
           mode="outlined"
@@ -37,7 +37,7 @@ const SigninPage = connect(
           label="Password"
           secureTextEntry={true}
           value={app.password}
-          onChangeText={d => dispatch(setAcoount('password', d))}
+          onChangeText={d => dispatch(setAccount('password', d))}
         />
         <TextInput
           mode="outlined"
@@ -48,7 +48,7 @@ const SigninPage = connect(
           label="Repeat Password"
           secureTextEntry={true}
           value={app.password}
-          onChangeText={d => dispatch(setAcoount('password', d))}
+          onChangeText={d => dispatch(setAccount('password', d))}
         />
         <View style={styles.button_container}>
           <Button
