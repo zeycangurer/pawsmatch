@@ -1,18 +1,22 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View, Text} from 'react-native';
+import {connect} from 'react-redux';
+import {signUp, setAcoount} from '../../redux/actions';
 import styles from './styles';
 import {TextInput, Button} from 'react-native-paper';
-import {useNavigation} from '@react-navigation/native';
 import {palette} from '../../theme/palette';
 
-const SigninPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const mapStateToProps = states => ({app: states.app});
+const mapDispatchToProps = dispatch => ({dispatch});
 
-  const navigation = useNavigation();
+const SigninPage = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(props => {
+  const {app, dispatch} = props;
   return (
     <View style={styles.container}>
-      <Text>LoginPage</Text>
+      <Text>SingupPage</Text>
       <View style={styles.input_container}>
         <TextInput
           mode="outlined"
@@ -21,8 +25,8 @@ const SigninPage = () => {
           textColor={palette.blue}
           activeOutlineColor={palette.blue}
           label="E-mail"
-          value={email}
-          onChangeText={text => setEmail(text)}
+          value={app.email}
+          onChangeText={d => dispatch(setAcoount('email', d))}
         />
         <TextInput
           mode="outlined"
@@ -32,8 +36,8 @@ const SigninPage = () => {
           activeOutlineColor={palette.blue}
           label="Password"
           secureTextEntry={true}
-          value={password}
-          onChangeText={text => setPassword(text)}
+          value={app.password}
+          onChangeText={d => dispatch(setAcoount('password', d))}
         />
         <TextInput
           mode="outlined"
@@ -43,24 +47,21 @@ const SigninPage = () => {
           activeOutlineColor={palette.blue}
           label="Repeat Password"
           secureTextEntry={true}
-          value={password}
-          onChangeText={text => setPassword(text)}
+          value={app.password}
+          onChangeText={d => dispatch(setAcoount('password', d))}
         />
         <View style={styles.button_container}>
-          <Button mode="contained" style={styles.button}>
-            Sign In
-          </Button>
           <Button
             style={styles.button}
             compact
-            mode="outlined"
-            onPress={() => navigation.navigate('login')}>
+            mode="contained"
+            onPress={() => dispatch(signUp())}>
             Sign Up
           </Button>
         </View>
       </View>
     </View>
   );
-};
+});
 
 export {SigninPage};

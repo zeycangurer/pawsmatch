@@ -1,57 +1,65 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable jsx-quotes */
-/* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import React from 'react';
+import {View, Text} from 'react-native';
+import {connect} from 'react-redux';
+import {setAccount, signIn} from '../../redux/actions';
+import {TextInput, Button} from 'react-native-paper';
 import styles from './styles';
-import { palette } from '../../theme/palette';
-import { TextInput, Button } from 'react-native-paper'
+import {palette} from '../../theme/palette';
+import {useNavigation} from '@react-navigation/native';
 
-import { useNavigation } from '@react-navigation/native';
+const mapStateToProps = states => ({app: states.app});
+const mapDispatchToProps = dispatch => ({dispatch});
 
-
-const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
+const LoginPage = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(props => {
+  const {app, dispatch} = props;
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Text>LoginPage</Text>
       <View style={styles.input_container}>
         <TextInput
-          mode='outlined'
+          mode="outlined"
           style={styles.input_area}
           outlineColor={palette.blue}
           textColor={palette.blue}
           activeOutlineColor={palette.blue}
-          label='E-mail'
-          value={email}
-          onChangeText={(text) => setEmail(text)}
+          label="E-mail"
+          value={app.email}
+          onChangeText={d => dispatch(setAccount('email', d))}
         />
         <TextInput
-          mode='outlined'
+          mode="outlined"
           style={styles.input_area}
-          label='Password'
+          label="Password"
           outlineColor={palette.blue}
           textColor={palette.blue}
           activeOutlineColor={palette.blue}
           secureTextEntry={true}
-          value={password}
-          onChangeText={(text) => setPassword(text)}
+          value={app.password}
+          onChangeText={d => dispatch(setAccount('password', d))}
         />
-        <View style={styles.button_container}
-        >
-          <Button compact mode='outlined' style={styles.button} onPress={() => navigation.navigate('signin')}>
+
+        <View style={styles.button_container}>
+          <Button
+            style={styles.button}
+            mode="contained"
+            onPress={() => dispatch(signIn())}>
             Sign In
           </Button>
           <Button
+            compact
+            mode="text"
             style={styles.button}
-            mode='contained'>Sign Up</Button>
+            onPress={() => navigation.navigate('signin')}>
+            Create a account
+          </Button>
         </View>
       </View>
     </View>
   );
-};
+});
 
-export { LoginPage };
+export {LoginPage};

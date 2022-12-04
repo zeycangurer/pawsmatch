@@ -7,14 +7,14 @@ export default StyleSheet.create({
     padding: 20,
     flex: 1,
     backgroundColor: palette.lightblue,
+    justifyContent: 'center',
   },
   button_container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    alignItems: 'center',
     margin: 16,
   },
   button: {
-    width: 100,
+    width: 200,
     borderColor: palette.purple,
   },
   input_container: {

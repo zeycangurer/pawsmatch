@@ -7,15 +7,16 @@ export default StyleSheet.create({
     padding: 20,
     flex: 1,
     backgroundColor: palette.lightblue,
+    justifyContent: 'center',
   },
   button_container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     margin: 16,
+    alignItems: 'center',
   },
   button: {
-    width: 100,
+    width: 200,
     borderColor: palette.purple,
+    marginBottom: 10,
   },
   input_container: {
     width: '100%',
