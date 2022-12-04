@@ -1,6 +1,11 @@
 import * as constants from '../constants';
 
-const app = (state = {}, action) => {
+const initialState = {
+  email: '',
+  password: '',
+};
+
+const app = (state = initialState, action) => {
   switch (action.type) {
     case constants.REQUEST_SIGN_IN:
       return {
@@ -16,6 +21,11 @@ const app = (state = {}, action) => {
       return {
         ...state,
         isSigningOut: true,
+      };
+    case constants.SET_ACCOUNT:
+      return {
+        ...state,
+        [action.key]: action.value,
       };
     default:
       return state;

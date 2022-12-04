@@ -1,6 +1,12 @@
 import * as constants from '../constants';
 import * as auth from '../../api/auth';
 
+export const setAcoount = (key, value) => ({
+  type: constants.SET_ACCOUNT,
+  key,
+  value,
+});
+
 export const signIn = payload => async (dispatch, getState) => {
   const {email, password} = getState().app;
   dispatch({type: constants.REQUEST_SIGN_IN});
