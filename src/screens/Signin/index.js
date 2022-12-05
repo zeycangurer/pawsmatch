@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text} from 'react-native';
 import {connect} from 'react-redux';
 import {signUp, setAccount} from '../../redux/actions';
@@ -14,6 +14,14 @@ const SigninPage = connect(
   mapDispatchToProps,
 )(props => {
   const {app, dispatch} = props;
+  const [repeatPassword, setRepeatPassword] = useState('');
+
+  // const checkRepeatPasswords = () => {
+  //   app.password !== repeatPassword
+  //     ? 
+  //     : 'Şifreler eşleşti';
+  // };
+
   return (
     <View style={styles.container}>
       <Text>SingupPage</Text>

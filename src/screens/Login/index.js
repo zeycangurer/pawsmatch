@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {connect} from 'react-redux';
 import {setAccount, signIn} from '../../redux/actions';
-import {TextInput, Button} from 'react-native-paper';
+import {TextInput, Button, Subheading} from 'react-native-paper';
 import styles from './styles';
 import {palette} from '../../theme/palette';
 import {useNavigation} from '@react-navigation/native';
@@ -18,7 +18,12 @@ const LoginPage = connect(
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Text>LoginPage</Text>
+      {/* {!!error && (
+        <Subheading
+          style={{color: 'red', textAlign: 'center', marginBottom: 16}}>
+          {error}
+        </Subheading>
+      )} */}
       <View style={styles.input_container}>
         <TextInput
           mode="outlined"
