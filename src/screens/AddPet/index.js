@@ -28,15 +28,6 @@ const AddPetPage = connect(
     },
   });
   const onSubmit = data => {
-    dispatch(setPet('name', data.name));
-    dispatch(setPet('pet-type', data['pet-type']));
-    dispatch(setPet('pet-gender', data['pet-gender']));
-    dispatch(setPet('age', data.age));
-    dispatch(setPet('pet-breed', data['pet-breed']));
-    dispatch(setPet('pet-size', data['pet-size']));
-    dispatch(setPet('location', data.location));
-    dispatch(setPet('pet-image', data['pet-image']));
-    dispatch(setPet('pet-description', data['pet-description']));
     dispatch(addPet());
   };
   return (
@@ -48,7 +39,7 @@ const AddPetPage = connect(
           <TextInput
             label="Name"
             onBlur={onBlur}
-            onChangeText={value => onChange(value)}
+            onChangeText={data => dispatch(setPet('name', data.name))}
             value={value}
           />
         )}
@@ -60,7 +51,9 @@ const AddPetPage = connect(
         control={control}
         render={({onChange, onBlur, value}) => (
           <RadioButton.Group
-            onValueChange={value => onChange(value)}
+            onValueChange={data =>
+              dispatch(setPet('pet-type', data['pet-type']))
+            }
             value={value}>
             <RadioButton.Item label="Dog" value="dog" />
             <RadioButton.Item label="Cat" value="cat" />
@@ -74,7 +67,9 @@ const AddPetPage = connect(
         control={control}
         render={({onChange, onBlur, value}) => (
           <RadioButton.Group
-            onValueChange={value => onChange(value)}
+            onValueChange={data =>
+              dispatch(setPet('pet-gender', data['pet-gender']))
+            }
             value={value}>
             <RadioButton.Item label="Female" value="female" />
             <RadioButton.Item label="Male" value="male" />
@@ -90,7 +85,7 @@ const AddPetPage = connect(
           <TextInput
             label="Age"
             onBlur={onBlur}
-            onChangeText={value => onChange(value)}
+            onChangeText={data => dispatch(setPet('age', data.age))}
             value={value}
           />
         )}
@@ -104,7 +99,9 @@ const AddPetPage = connect(
           <TextInput
             label="Breed"
             onBlur={onBlur}
-            onChangeText={value => onChange(value)}
+            onChangeText={data =>
+              dispatch(setPet('pet-breed', data['pet-breed']))
+            }
             value={value}
           />
         )}
@@ -116,7 +113,9 @@ const AddPetPage = connect(
         control={control}
         render={({onChange, onBlur, value}) => (
           <RadioButton.Group
-            onValueChange={value => onChange(value)}
+            onValueChange={data =>
+              dispatch(setPet('pet-size', data['pet-size']))
+            }
             value={value}>
             <RadioButton.Item label="Small" value="small" />
             <RadioButton.Item label="Medium" value="medium" />
@@ -133,7 +132,7 @@ const AddPetPage = connect(
           <TextInput
             label="Location"
             onBlur={onBlur}
-            onChangeText={value => onChange(value)}
+            onChangeText={data => dispatch(setPet('location', data.location))}
             value={value}
           />
         )}
@@ -147,7 +146,9 @@ const AddPetPage = connect(
           <TextInput
             label="Image"
             onBlur={onBlur}
-            onChangeText={value => onChange(value)}
+            onChangeText={data =>
+              dispatch(setPet('pet-image', data['pet-image']))
+            }
             value={value}
           />
         )}
@@ -161,7 +162,9 @@ const AddPetPage = connect(
           <TextInput
             label="Description"
             onBlur={onBlur}
-            onChangeText={value => onChange(value)}
+            onChangeText={data =>
+              dispatch(setPet('pet-description', data['pet-description']))
+            }
             value={value}
           />
         )}

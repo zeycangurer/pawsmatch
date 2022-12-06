@@ -18,7 +18,7 @@ const MainTab = () => {
               size={size}
             />
           );
-        }, 
+        },
         tabBarActiveTintColor: palette.orange,
         tabBarInactiveTintColor: palette.yellow,
       })}>
