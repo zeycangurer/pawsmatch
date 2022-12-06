@@ -2,8 +2,10 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {HomePage} from '../../screens/Home';
 import {AddPetPage} from '../../screens/AddPet';
-import Foundation from 'react-native-vector-icons/Foundation';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import {palette} from '../../theme/palette';
+import ChatPage from '../../screens/Chat';
+import ProfilePage from '../../screens/Profile';
 
 const Tab = createBottomTabNavigator();
 const MainTab = () => {
@@ -12,8 +14,9 @@ const MainTab = () => {
       screenOptions={({route}) => ({
         tabBarIcon: ({focused, color, size}) => {
           return (
-            <Foundation
-              name={route.name === 'addPets' ? 'paw' : 'home'}
+            <Ionicons
+              name={
+                route.name === 'profile' ? 'person' : (route.name === 'home') ? 'home' : 'chatbubbles'}
               color={color}
               size={size}
             />
@@ -22,8 +25,9 @@ const MainTab = () => {
         tabBarActiveTintColor: palette.orange,
         tabBarInactiveTintColor: palette.yellow,
       })}>
+      <Tab.Screen name="profile" component={ProfilePage} />
       <Tab.Screen name="home" component={HomePage} />
-      <Tab.Screen name="addPets" component={AddPetPage} />
+      <Tab.Screen name="chat" component={ChatPage} />
     </Tab.Navigator>
   );
 };

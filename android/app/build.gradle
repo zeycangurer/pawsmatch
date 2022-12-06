@@ -42,7 +42,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
  *   // bundleInBeta: true,
  *
  *   // whether to disable dev mode in custom build variants (by default only disabled in release)
- *   // for example: to disable dev mode in the staging build type (if configured)
+ *   // for example: to disable dev mode in the staging build typegit (if configured)
  *   devDisabledInStaging: true,
  *   // The configuration property can be in the following formats
  *   //         'devDisabledIn${productFlavor}${buildType}'
