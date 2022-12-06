@@ -15,4 +15,4 @@ const MainTab = () => {
   );
 };
 
-export default MainTab
+export default MainTab;
