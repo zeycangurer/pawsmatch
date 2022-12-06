@@ -5,6 +5,7 @@ import {AddPetPage} from '../../screens/AddPet';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {palette} from '../../theme/palette';
 import ChatPage from '../../screens/Chat';
+import ProfilePage from '../../screens/Profile';
 
 const Tab = createBottomTabNavigator();
 const MainTab = () => {
@@ -15,7 +16,7 @@ const MainTab = () => {
           return (
             <Ionicons
               name={
-                route.name === 'addPets' ? 'paw' : (route.name === 'home') ? 'home' : 'chatbubbles'}
+                route.name === 'profile' ? 'person' : (route.name === 'home') ? 'home' : 'chatbubbles'}
               color={color}
               size={size}
             />
@@ -24,8 +25,8 @@ const MainTab = () => {
         tabBarActiveTintColor: palette.orange,
         tabBarInactiveTintColor: palette.yellow,
       })}>
+      <Tab.Screen name="profile" component={ProfilePage} />
       <Tab.Screen name="home" component={HomePage} />
-      <Tab.Screen name="addPets" component={AddPetPage} />
       <Tab.Screen name="chat" component={ChatPage} />
     </Tab.Navigator>
   );
