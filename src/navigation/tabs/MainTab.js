@@ -1,11 +1,10 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {HomePage} from '../../screens/Home';
-import {AddPetPage} from '../../screens/AddPet';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {palette} from '../../theme/palette';
-import ChatPage from '../../screens/Chat';
 import ProfilePage from '../../screens/Profile';
+import ChatListPage from '../../screens/ChatList';
 
 const Tab = createBottomTabNavigator();
 const MainTab = () => {
@@ -27,7 +26,7 @@ const MainTab = () => {
       })}>
       <Tab.Screen name="profile" component={ProfilePage} />
       <Tab.Screen name="home" component={HomePage} />
-      <Tab.Screen name="chat" component={ChatPage} />
+      <Tab.Screen name="chatList" component={ChatListPage} />
     </Tab.Navigator>
   );
 };
