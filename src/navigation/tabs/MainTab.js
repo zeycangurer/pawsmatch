@@ -16,12 +16,17 @@ const MainTab = () => {
           return (
             <Ionicons
               name={
-                route.name === 'profile' ? 'person' : (route.name === 'home') ? 'home' : 'chatbubbles'}
+                route.name === 'profile'
+                  ? 'person'
+                  : route.name === 'home'
+                  ? 'home'
+                  : 'chatbubbles'
+              }
               color={color}
               size={size}
             />
           );
-        }, 
+        },
         tabBarActiveTintColor: palette.orange,
         tabBarInactiveTintColor: palette.yellow,
       })}>

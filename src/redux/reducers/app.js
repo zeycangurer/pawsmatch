@@ -3,6 +3,22 @@ import * as constants from '../constants';
 const initialState = {
   email: '',
   password: '',
+
+  /////////  PETS  /////////
+
+  pet: {
+    name: '',
+    'pet-type': '',
+    'pet-gender': '',
+    'pet-breed': '',
+    'pet-color': '',
+    'pet-age': '',
+    'pet-weight': '',
+    'pet-size': '',
+    'pet-location': '',
+    'pet-description': '',
+    'pet-image': '',
+  },
 };
 
 const app = (state = initialState, action) => {
