@@ -1,8 +1,13 @@
 import database from '@react-native-firebase/database';
 
 export const addPet = async pet => {
-  const newPet = await database().ref('/Pets').push();
-  newPet.set(pet);
+  const newPet = await database()
+    .ref('/Pets')
+    .push({
+      ...pet,
+    })
+    .then(() => console.log('Data set.', pet));
+  return newPet;
 };
 
 export const getPets = async () => {
