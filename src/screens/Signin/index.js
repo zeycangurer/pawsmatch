@@ -18,7 +18,7 @@ const SigninPage = connect(
 
   // const checkRepeatPasswords = () => {
   //   app.password !== repeatPassword
-  //     ? 
+  //     ?
   //     : 'Şifreler eşleşti';
   // };
 
