@@ -4,10 +4,9 @@ import ChatHeader from '../../components/Chat/ChatHeader';
 import ChatInput from '../../components/Chat/ChatInput';
 import Messages from '../../components/Chat/Messages';
 
-
 const ChatPage = () => {
   return (
-    <View style={{flex:1}}>
+    <View style={{flex: 1}}>
       <ChatHeader />
       <Messages />
       <ChatInput />
@@ -15,4 +14,4 @@ const ChatPage = () => {
   );
 };
 
-export default ChatPage;
+export {ChatPage};

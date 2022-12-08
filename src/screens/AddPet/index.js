@@ -4,6 +4,7 @@ import styles from './styles';
 import {TextInput, RadioButton, Button} from 'react-native-paper';
 import {connect} from 'react-redux';
 import {setPet, addPet} from '../../redux/actions';
+import {useNavigation} from '@react-navigation/native';
 import {palette} from '../../theme/palette';
 
 const mapStateToProps = states => ({app: states.app});
@@ -17,6 +18,7 @@ const AddPetPage = connect(
   const [petType, setPetType] = useState('');
   const [petGender, setPetGender] = useState('');
   const [petSize, setPetSize] = useState('');
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Add Pet</Text>
@@ -94,6 +96,12 @@ const AddPetPage = connect(
         value={app.pet.location}
         onChangeText={text => dispatch(setPet('location', text))}
       />
+      <Button
+        onPress={() => navigation.navigate('gallery')}
+        mode="contained"
+        style={styles.button}>
+        Upload Image
+      </Button>
       <TextInput
         label="Image"
         value={app.pet.image}
