@@ -7,4 +7,5 @@ export const palette = {
   lightgrey: '#EEEEEE',
   grey: '#434242',
   darkgrey: '#222222',
+  nilegreen: '#CDFCF6',
 };

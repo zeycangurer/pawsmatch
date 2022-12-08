@@ -4,15 +4,15 @@ import ChatHeader from '../../components/Chat/ChatHeader';
 import ChatInput from '../../components/Chat/ChatInput';
 import Messages from '../../components/Chat/Messages';
 
-
 const ChatPage = () => {
   return (
-    <View style={{flex:1, width: '100%'}}>
+
+    <View style={{flex: 1}}>
       <ChatHeader />
-      <Messages />
+      {/* <Messages /> */}
       <ChatInput />
     </View>
   );
 };
 
-export default ChatPage;
+export {ChatPage};

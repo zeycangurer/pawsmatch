@@ -9,6 +9,7 @@ export default StyleSheet.create({
     paddingBottom: 16,
     alignItems: 'center',
     justifyContent: 'space-between',
+    backgroundColor: palette.lightblue
   },
 
   titleWrapper: {
