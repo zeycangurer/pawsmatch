@@ -4,10 +4,11 @@ import { palette } from '../../../theme/palette';
 export default StyleSheet.create({
   container: {
     width: '100%',
-    flexDirection: 'row',
+    flexDirection: 'row', 
     padding: 4,
     position: 'absolute',
     bottom: 3,
+    flex:1,
   },
   inputBox: {
     backgroundColor: palette.lightgrey,
@@ -15,7 +16,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     borderRadius: 35,
-    color:palette.grey,
+    color: palette.grey,
   },
   iconWrapper: {
     width: '12%',
@@ -33,5 +34,8 @@ export default StyleSheet.create({
     marginRight: 18,
     left: 8,
     color: palette.grey,
+  },
+  backIcon: {
+    marginRight: 4,
   },
 });

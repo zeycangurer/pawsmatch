@@ -3,15 +3,14 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import styles from './styles';
 import ChatListHeader from '../../components/ChatListHeader';
-import ChatPage from '../Chat';
 
 const ChatListPage = () => {
   const navigation = useNavigation();
   return (
-    <View>
+    <View style={{flex:1}} >
       <ChatListHeader />
       <ScrollView>
-        <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
+        <TouchableOpacity onPress={() => navigation.navigate('chat')}>
           <View style={styles.container}>
             <View style={styles.imageContainer}>
               <Image

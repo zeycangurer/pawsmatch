@@ -7,7 +7,7 @@ import Messages from '../../components/Chat/Messages';
 
 const ChatPage = () => {
   return (
-    <View style={{flex:1}}>
+    <View style={{flex:1, width: '100%'}}>
       <ChatHeader />
       <Messages />
       <ChatInput />
