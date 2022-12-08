@@ -7,7 +7,7 @@ import ChatListHeader from '../../components/ChatListHeader';
 const ChatListPage = () => {
   const navigation = useNavigation();
   return (
-    <View>
+    <View style={{flex:1}} >
       <ChatListHeader />
       <ScrollView>
         <TouchableOpacity onPress={() => navigation.navigate('chat')}>
