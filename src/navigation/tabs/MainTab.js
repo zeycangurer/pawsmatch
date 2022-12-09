@@ -29,6 +29,8 @@ const MainTab = () => {
         tabBarActiveTintColor: palette.orange,
         tabBarInactiveTintColor: palette.yellow,
         headerShown: false,
+        tabBarActiveBackgroundColor: palette.nilegreen,
+        tabBarInactiveBackgroundColor: palette.nilegreen,
       })}>
       <Tab.Screen name="profile" component={ProfilePage} />
       <Tab.Screen name="home" component={HomePage} />

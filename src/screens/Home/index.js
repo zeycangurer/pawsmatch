@@ -42,10 +42,6 @@ const HomePage = () => {
         stackSize={3}
       />
     </View>
-
-    // <View style={styles.container}>
-    //   <Text>HomePage</Text>
-    // </View>
   );
 };
 
