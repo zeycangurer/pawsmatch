@@ -1,7 +1,6 @@
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import styles from './styles';
-import IconEntypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 
@@ -28,9 +27,6 @@ const ChatHeader = () => {
             />
           </View>
           <Text style={styles.titleText}>Betül Ceren Yetiz</Text>
-        </View>
-        <View style={styles.iconWrapper}>
-          <IconEntypo name="dots-three-vertical" size={18} color="white" />
         </View>
       </View>
     </View>

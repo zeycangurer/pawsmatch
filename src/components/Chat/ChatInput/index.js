@@ -26,10 +26,7 @@ const ChatInput = () => {
         backgroundColor: palette.lightblue,
       }}
       textInputStyle={{
-        backgroundColor: palette.lightblue,
-        borderRadius: 30,
-        color: palette.blue,
-      }}
+        color: palette.blue,      }}
       user={{
         _id: 1,
         name: 'Betül Ceren Yetiz',
