@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Alert} from 'react-native';
 import styles from './styles';
 import {TextInput, RadioButton, Button} from 'react-native-paper';
 import {connect} from 'react-redux';
 import {setPet, addPet} from '../../redux/actions';
-import {useNavigation} from '@react-navigation/native';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {palette} from '../../theme/palette';
 
 const mapStateToProps = states => ({app: states.app});
@@ -15,20 +15,60 @@ const AddPetPage = connect(
   mapDispatchToProps,
 )(props => {
   const {app, dispatch} = props;
+  let source = '';
   const [petType, setPetType] = useState('');
   const [petGender, setPetGender] = useState('');
   const [petSize, setPetSize] = useState('');
-  const navigation = useNavigation();
+  const options = {
+    storageOptions: {
+      skipBackup: true,
+      path: 'images',
+    },
+  };
+
+  const handleCamera = () => {
+    launchCamera(options, response => {
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+        Alert.alert('Error', 'Please select an image');
+      } else if (response.error) {
+        Alert.alert('Error', response.error);
+        console.log('Error: ', response.error);
+      } else if (response.customButton) {
+        Alert.alert('Error', 'Please select an image');
+        console.log('User tapped custom button: ', response.customButton);
+      } else {
+        source = {uri: response.assets[0].uri};
+        console.log('source', source.uri);
+        dispatch(setPet('image', source.uri));
+      }
+    });
+  };
+
+  const handleGallery = () => {
+    launchImageLibrary(options, response => {
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+        Alert.alert('Error', 'Please select an image');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+        Alert.alert('Error', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+        Alert.alert('Error', 'Please select an image');
+      } else {
+        source = {uri: response};
+        console.log('source', source.uri);
+        dispatch(setPet('image', source.uri));
+      }
+    });
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Add Pet</Text>
       <TextInput
         label="Name"
         mode="outlined"
-        style={styles.input_area}
-        outlineColor={palette.blue}
-        textColor={palette.blue}
-        activeOutlineColor={palette.blue}
         value={app.pet.name}
         onChangeText={text => dispatch(setPet('name', text))}
       />
@@ -64,11 +104,13 @@ const AddPetPage = connect(
       </RadioButton.Group>
       <TextInput
         label="Breed"
+        mode="outlined"
         value={app.pet.breed}
         onChangeText={text => dispatch(setPet('breed', text))}
       />
       <TextInput
         label="Age"
+        mode="outlined"
         value={app.pet.age}
         onChangeText={text => dispatch(setPet('age', text))}
       />
@@ -93,22 +135,22 @@ const AddPetPage = connect(
       </RadioButton.Group>
       <TextInput
         label="Location"
+        mode="outlined"
         value={app.pet.location}
         onChangeText={text => dispatch(setPet('location', text))}
       />
-      <Button
-        onPress={() => navigation.navigate('gallery')}
-        mode="contained"
-        style={styles.button}>
-        Upload Image
-      </Button>
-      <TextInput
-        label="Image"
-        value={app.pet.image}
-        onChangeText={text => dispatch(setPet('image', text))}
-      />
+      <Text>Add Image</Text>
+      <View style={styles.imageContainer}>
+        <Button onPress={handleCamera} mode="contained" style={styles.button}>
+          Camera
+        </Button>
+        <Button onPress={handleGallery} mode="contained" style={styles.button}>
+          Gallery
+        </Button>
+      </View>
       <TextInput
         label="Description"
+        mode="outlined"
         value={app.pet.description}
         onChangeText={text => dispatch(setPet('description', text))}
       />
