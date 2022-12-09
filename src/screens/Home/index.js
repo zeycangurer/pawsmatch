@@ -38,10 +38,6 @@ const HomePage = connect(
         stackSize={3}
       />
     </View>
-
-    // <View style={styles.container}>
-    //   <Text>HomePage</Text>
-    // </View>
   );
 });
 

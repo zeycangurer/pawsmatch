@@ -28,7 +28,7 @@ export default StyleSheet.create({
   },
   input: {
     width: '85%',
-    color: palette.grey,
+    color: palette.grey,  
   },
   smileIcon: {
     marginRight: 18,

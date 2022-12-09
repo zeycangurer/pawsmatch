@@ -3,11 +3,12 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import styles from './styles';
 import ChatListHeader from '../../components/ChatListHeader';
+import { palette } from '../../theme/palette';
 
 const ChatListPage = () => {
   const navigation = useNavigation();
   return (
-    <View style={{flex:1}} >
+    <View style={{flex:1, backgroundColor:palette.lightgrey}} >
       <ChatListHeader />
       <ScrollView>
         <TouchableOpacity onPress={() => navigation.navigate('chat')}>
