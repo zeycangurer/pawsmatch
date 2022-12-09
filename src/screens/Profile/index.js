@@ -5,6 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 import {connect} from 'react-redux';
 import {signOut} from '../../redux/actions';
 import {Avatar, Title, Subheading} from 'react-native-paper';
+import { AddPetPage } from '../AddPet';
 
 const mapStateToProps = states => ({app: states.app});
 const mapDispatchToProps = dispatch => ({dispatch});
@@ -25,6 +26,12 @@ const ProfilePage = connect(
           dispatch(signOut());
         }}>
         Sign Out
+      </Button>
+      <Button
+        onPress={() => {
+          navigation.navigate('addPet');
+        }}>
+        Add Pet
       </Button>
     </View>
   );
