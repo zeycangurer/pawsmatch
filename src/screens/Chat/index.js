@@ -6,9 +6,10 @@ import Messages from '../../components/Chat/Messages';
 
 const ChatPage = () => {
   return (
+
     <View style={{flex: 1}}>
       <ChatHeader />
-      <Messages />
+      {/* <Messages /> */}
       <ChatInput />
     </View>
   );

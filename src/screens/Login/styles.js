@@ -27,5 +27,6 @@ export default StyleSheet.create({
     alignSelf: 'center',
     color: palette.blue,
     marginBottom: 10,
+    backgroundColor: palette.lightblue,
   },
 });
