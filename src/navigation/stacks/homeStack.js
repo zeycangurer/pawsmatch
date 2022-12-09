@@ -5,7 +5,6 @@ import MainTab from '../tabs/MainTab';
 import {AddPetPage} from '../../screens/AddPet';
 
 import {ChatPage} from '../../screens/Chat';
-import {GalleryPage} from '../../screens/Gallery';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,7 +15,6 @@ const HomeStack = () => {
       {/* <Stack.Screen name='mainDrawer' component={MainDrawer} /> */}
       <Stack.Screen name="chat" component={ChatPage} />
       <Stack.Screen name="addPet" component={AddPetPage} />
-      <Stack.Screen name="gallery" component={GalleryPage} />
     </Stack.Navigator>
   );
 };
