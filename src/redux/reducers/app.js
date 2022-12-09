@@ -26,11 +26,13 @@ const app = (state = initialState, action) => {
     case constants.REQUEST_SIGN_IN:
       return {
         ...state,
+        password: '',
         isSigningIn: true,
       };
     case constants.REQUEST_SIGN_UP:
       return {
         ...state,
+        password: '',
         isSigningUp: true,
       };
     case constants.REQUEST_SIGN_OUT:

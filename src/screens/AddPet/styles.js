@@ -14,7 +14,7 @@ export default StyleSheet.create({
     margin: 16,
   },
   button: {
-    width: 200,
+    width: '50%',
     borderColor: palette.purple,
   },
   radioGroup: {
@@ -32,5 +32,10 @@ export default StyleSheet.create({
     fontSize: 16,
     color: palette.blue,
     fontWeight: '1000',
+  },
+  imageContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
   },
 });
