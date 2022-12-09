@@ -3,6 +3,8 @@ import * as constants from '../constants';
 const initialState = {
   email: '',
   password: '',
+  isSigningIn: false,
+  isSigningUp: false,
 
   /////////  PETS  /////////
 
@@ -38,7 +40,8 @@ const app = (state = initialState, action) => {
     case constants.REQUEST_SIGN_OUT:
       return {
         ...state,
-        isSigningOut: true,
+        isSigningIn: false,
+        isSigningUp: false,
       };
     case constants.SET_ACCOUNT:
       return {
@@ -81,12 +84,10 @@ const app = (state = initialState, action) => {
     case constants.REQUEST_UPDATE_PET:
       return {
         ...state,
-        isUpdatingPet: true,
       };
     case constants.REQUEST_DELETE_PET:
       return {
         ...state,
-        isDeletingPet: true,
       };
 
     /////////  PETS  /////////
