@@ -5,10 +5,9 @@ import {useNavigation} from '@react-navigation/native';
 import {connect} from 'react-redux';
 import {signOut} from '../../redux/actions';
 import {Avatar, Title, Subheading} from 'react-native-paper';
-import { AddPetPage } from '../AddPet';
 import PetCard from '../../components/PetCard';
 import styles from './styles';
-import { palette } from '../../theme/palette';
+import {palette} from '../../theme/palette';
 
 const mapStateToProps = states => ({app: states.app});
 const mapDispatchToProps = dispatch => ({dispatch});
@@ -21,7 +20,7 @@ const ProfilePage = connect(
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Avatar.Text label="ZG" style={{backgroundColor:palette.blue}}/>
+      <Avatar.Text label="ZG" style={{backgroundColor: palette.blue}} />
       <Title>Zeycan</Title>
       <Subheading>z@gmail.com</Subheading>
       <Button
@@ -38,7 +37,6 @@ const ProfilePage = connect(
         }}>
         Add Pet
       </Button>
-      
     </View>
   );
 });
