@@ -8,6 +8,7 @@ const initialState = {
 
   /////////  PETS  /////////
 
+  pets: [],
   pet: {
     name: '',
     type: '',
@@ -52,7 +53,7 @@ const app = (state = initialState, action) => {
     case constants.SET_PET:
       return {
         ...state,
-        pet: {...state.pet, [action.key]: action.value},
+        pet: {...state.pet, [action.payload.key]: action.payload.value},
       };
     case constants.REQUEST_ADD_PET:
       return {
@@ -67,7 +68,7 @@ const app = (state = initialState, action) => {
     case constants.RECEIVE_GET_PETS:
       return {
         ...state,
-        pets: action.pets,
+        pets: action.payload.pets,
       };
     case constants.REQUEST_GET_PET:
       return {

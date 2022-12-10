@@ -10,11 +10,6 @@ export const addPet = async pet => {
   return newPet;
 };
 
-export const getPets = async () => {
-  const pets = await database().ref('/Pets').once('value');
-  return pets.val();
-};
-
 export const getPet = async id => {
   const pet = await database().ref(`/Pets/${id}`).once('value');
   return pet.val();

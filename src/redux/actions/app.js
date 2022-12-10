@@ -41,8 +41,7 @@ export const signOut = payload => async dispatch => {
 
 export const setPet = (key, value) => ({
   type: constants.SET_PET,
-  key,
-  value,
+  payload: {key, value},
 });
 
 export const addPet = payload => async (dispatch, getState) => {
@@ -60,7 +59,7 @@ export const getPets = payload => async dispatch => {
   dispatch({type: constants.REQUEST_GET_PETS});
   try {
     const pets = await database.getPets();
-    dispatch({type: constants.RECEIVE_GET_PETS, pets});
+    dispatch({type: constants.RECEIVE_GET_PETS, payload: {pets}});
   } catch (error) {
     console.log(error);
   }
