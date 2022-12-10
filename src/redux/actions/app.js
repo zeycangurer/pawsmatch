@@ -46,7 +46,8 @@ export const setPet = (key, value) => ({
 });
 
 export const addPet = payload => async (dispatch, getState) => {
-  const pet = getState().app;
+  const pet = getState().app.pet;
+  console.log(pet);
   dispatch({type: constants.REQUEST_ADD_PET});
   try {
     await database.addPet(pet);

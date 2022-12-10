@@ -1,8 +1,8 @@
 import * as constants from '../constants';
 
 const initialState = {
-  email: '',
-  password: '',
+  email: 'ceren@gmail.com',
+  password: 'ceren123',
   isSigningIn: false,
   isSigningUp: false,
 
@@ -10,16 +10,14 @@ const initialState = {
 
   pet: {
     name: '',
-    'pet-type': '',
-    'pet-gender': '',
-    'pet-breed': '',
-    'pet-color': '',
-    'pet-age': '',
-    'pet-weight': '',
-    'pet-size': '',
-    'pet-location': '',
-    'pet-description': '',
-    'pet-image': '',
+    type: '',
+    gender: '',
+    breed: '',
+    age: '',
+    size: '',
+    location: '',
+    description: '',
+    image: '',
   },
 };
 
@@ -54,7 +52,7 @@ const app = (state = initialState, action) => {
     case constants.SET_PET:
       return {
         ...state,
-        [action.key]: action.value,
+        pet: {...state.pet, [action.key]: action.value},
       };
     case constants.REQUEST_ADD_PET:
       return {

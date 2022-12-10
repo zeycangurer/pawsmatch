@@ -1,6 +1,6 @@
 export const palette = {
   purple: '#540375',
-  lightblue: '#D6EFED',
+  lightblue: '#fff',
   blue: '#10A19D',
   orange: '#FF7000',
   yellow: '#FFBF00',
@@ -8,4 +8,4 @@ export const palette = {
   grey: '#434242',
   darkgrey: '#222222',
   nilegreen: '#CDFCF6',
-}
+};

@@ -74,10 +74,10 @@ const AddPetPage = connect(
       />
       <RadioButton.Group
         onValueChange={value => {
-          dispatch(setPet('pet-type', value));
+          dispatch(setPet('type', value));
           setPetType(value);
         }}
-        value={(app.pet['pet-type'], petType)}>
+        value={(app.pet.type, petType)}>
         <View style={styles.radioContainer}>
           <Text style={styles.radioLabel}>Dog</Text>
           <RadioButton value="dog" />
@@ -89,10 +89,10 @@ const AddPetPage = connect(
       </RadioButton.Group>
       <RadioButton.Group
         onValueChange={value => {
-          dispatch(setPet('pet-gender', value));
+          dispatch(setPet('gender', value));
           setPetGender(value);
         }}
-        value={(app.pet['pet-gender'], petGender)}>
+        value={(app.pet.gender, petGender)}>
         <View style={styles.radioContainer}>
           <Text style={styles.radioLabel}>Female</Text>
           <RadioButton value="female" />
@@ -116,10 +116,10 @@ const AddPetPage = connect(
       />
       <RadioButton.Group
         onValueChange={value => {
-          dispatch(setPet('pet-size', value));
+          dispatch(setPet('size', value));
           setPetSize(value);
         }}
-        value={(app.pet['pet-size'], petSize)}>
+        value={(app.pet.size, petSize)}>
         <View style={styles.radioContainer}>
           <Text style={styles.radioLabel}>Small</Text>
           <RadioButton value="small" />
