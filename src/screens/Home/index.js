@@ -31,7 +31,7 @@ const HomePage = connect(
               }>
               <PetCard
                 name={item.name}
-                type={item.type}
+                breed={item.breed}
                 description={item.description}
                 image={item.image}
               />
