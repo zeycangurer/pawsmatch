@@ -122,15 +122,15 @@ const AddPetPage = connect(
         value={(app.pet.size, petSize)}>
         <View style={styles.radioContainer}>
           <Text style={styles.radioLabel}>Small</Text>
-          <RadioButton value="small" />
+          <RadioButton value="Small" />
         </View>
         <View style={styles.radioContainer}>
           <Text style={styles.radioLabel}>Medium</Text>
-          <RadioButton value="medium" />
+          <RadioButton value="Medium" />
         </View>
         <View style={styles.radioContainer}>
           <Text style={styles.radioLabel}>Large</Text>
-          <RadioButton value="large" />
+          <RadioButton value="Large" />
         </View>
       </RadioButton.Group>
       <TextInput
@@ -156,7 +156,7 @@ const AddPetPage = connect(
       />
       <Button
         mode="contained"
-        onPress={() => dispatch(addPet())}
+        onPress={() => dispatch(addPet()) && props.navigation.navigate('home')}
         style={styles.button}>
         Add Pet
       </Button>

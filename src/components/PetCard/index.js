@@ -11,8 +11,9 @@ const PetCard = props => {
       </View>
       <View style={styles.innerContainer}>
         <Text style={styles.name}>{props.name}</Text>
-        <Text style={styles.type}>Breed: {props.breed}</Text>
-        <Text style={styles.description}>Description: {props.description}</Text>
+        <Text style={styles.description}>Breed: {props.breed}</Text>
+        <Text style={styles.description}>Size: {props.size}</Text>
+        <Text style={styles.description}>Location: {props.location}</Text>
       </View>
     </View>
   );

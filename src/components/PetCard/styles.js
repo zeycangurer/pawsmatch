@@ -12,6 +12,7 @@ export default StyleSheet.create({
   innerContainer: {
     flex: 2,
     flexDirection: 'column',
+    paddingLeft: 16,
     justifyContent: 'space-between',
   },
   imageContaier: {
@@ -30,14 +31,9 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
   },
-  type: {
-    color: palette.darkgrey,
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
   description: {
     color: palette.darkgrey,
-    fontWeight: 'bold',
-    fontSize: 16,
+    fontWeight: '500',
+    fontSize: 14,
   },
 });
