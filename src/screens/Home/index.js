@@ -4,6 +4,7 @@ import styles from './styles';
 import {palette} from '../../theme/palette';
 import {connect} from 'react-redux';
 import {getPets} from '../../redux/actions';
+import PetCard from '../../components/PetCard';
 
 const HomePage = connect(
   states => ({app: states.app}),
@@ -24,10 +25,16 @@ const HomePage = connect(
         renderItem={({item}) => {
           console.log('item ', item);
           return (
-            <View style={styles.card}>
-              <Text>{item.name}</Text>
-              <Text>{item.type}</Text>
-              <Image source={{uri: item.image}} />
+            <View
+              style={
+                item.gender === 'female' ? styles.cardFemale : styles.cardMale
+              }>
+              <PetCard
+                name={item.name}
+                type={item.type}
+                description={item.description}
+                image={item.image}
+              />
             </View>
           );
         }}
