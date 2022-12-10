@@ -23,7 +23,6 @@ const HomePage = connect(
       <FlatList
         data={pets}
         renderItem={({item}) => {
-          console.log('item ', item);
           return (
             <View
               style={

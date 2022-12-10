@@ -23,3 +23,8 @@ export const signOut = async () => {
     console.log(error);
   }
 };
+
+export const getUserInfo = () => {
+  const user = auth().currentUser.uid;
+  return user;
+};
