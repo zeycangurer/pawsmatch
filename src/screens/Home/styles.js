@@ -4,7 +4,7 @@ import {palette} from '../../theme/palette';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    margin: 8,
+    padding: 8,
     backgroundColor: palette.lightblue,
   },
   cardMale: {
