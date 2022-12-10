@@ -10,10 +10,9 @@ const HomePage = connect(
   dispatch => ({dispatch}),
 )(props => {
   const {app, dispatch} = props;
-  let {pets} = app;
+  const {pets} = app;
   const getPet = () => {
-    console.log('getPet');
-    pets = dispatch(getPets());
+    dispatch(getPets());
   };
   useEffect(() => {
     getPet();
@@ -22,13 +21,16 @@ const HomePage = connect(
     <View style={styles.container}>
       <FlatList
         data={pets}
-        renderItem={({item}) => (
-          <View style={styles.petContainer}>
-            <Text>{item.name}</Text>
-            <Text>{item.type}</Text>
-            <Image source={{uri: item.image}} />
-          </View>
-        )}
+        renderItem={({item}) => {
+          console.log('item ', item);
+          return (
+            <View style={styles.card}>
+              <Text>{item.name}</Text>
+              <Text>{item.type}</Text>
+              <Image source={{uri: item.image}} />
+            </View>
+          );
+        }}
       />
     </View>
   );
