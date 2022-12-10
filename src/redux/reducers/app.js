@@ -5,6 +5,7 @@ const initialState = {
   password: 'ceren123',
   isSigningIn: false,
   isSigningUp: false,
+  user: {},
 
   /////////  PETS  /////////
 
@@ -78,7 +79,7 @@ const app = (state = initialState, action) => {
     case constants.RECEIVE_GET_PET:
       return {
         ...state,
-        pet: action.pet,
+        pet: action.payload.pet,
       };
     case constants.REQUEST_UPDATE_PET:
       return {
