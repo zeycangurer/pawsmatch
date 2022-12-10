@@ -10,6 +10,15 @@ export const addPet = async pet => {
   return newPet;
 };
 
+export const getPets = async () => {
+  const pets = await (await database().ref('/Pets').once('value')).val();
+  let allPets = [];
+  Object.keys(pets).map(key => {
+    allPets.push(pets[key]);
+  });
+  return allPets;
+};
+
 export const getPet = async id => {
   const pet = await database().ref(`/Pets/${id}`).once('value');
   return pet.val();

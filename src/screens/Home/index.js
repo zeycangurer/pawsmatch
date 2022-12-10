@@ -32,7 +32,8 @@ const HomePage = connect(
               <PetCard
                 name={item.name}
                 breed={item.breed}
-                description={item.description}
+                size={item.size}
+                location={item.location}
                 image={item.image}
               />
             </View>
