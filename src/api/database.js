@@ -55,3 +55,4 @@ export const deletePet = async id => {
   const deletedPet = await database().ref(`/Pets/${id}`).remove();
   return deletedPet;
 };
+

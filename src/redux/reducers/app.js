@@ -22,7 +22,7 @@ const initialState = {
     description: '',
     image: '',
   },
-};
+}
 
 const app = (state = initialState, action) => {
   switch (action.type) {

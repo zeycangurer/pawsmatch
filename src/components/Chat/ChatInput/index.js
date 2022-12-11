@@ -1,8 +1,8 @@
-import React, { useCallback, useLayoutEffect, useState } from 'react';
+import React, {useCallback, useLayoutEffect, useState} from 'react';
 import styles from './styles';
 
-import { GiftedChat, Bubble } from 'react-native-gifted-chat';
-import { palette } from '../../../theme/palette';
+import {GiftedChat, Bubble} from 'react-native-gifted-chat';
+import {palette} from '../../../theme/palette';
 
 const ChatInput = () => {
   const [messages, setMessages] = useState([]);
@@ -12,11 +12,10 @@ const ChatInput = () => {
       GiftedChat.append(previousMessages, messages),
     );
     // setMessages([...messages, ...messages]);
-    const { _id, createdAt, text, user } = messages[0];
+    const {_id, createdAt, text, user} = messages[0];
   }, []);
 
   return (
-    
     <GiftedChat
       messages={messages}
       showAvatarForEveryMessage={true}
@@ -26,7 +25,8 @@ const ChatInput = () => {
         backgroundColor: palette.lightblue,
       }}
       textInputStyle={{
-        color: palette.blue,      }}
+        color: palette.blue
+      }}
       user={{
         _id: 1,
         name: 'Betül Ceren Yetiz',
@@ -51,16 +51,13 @@ const ChatInput = () => {
                 alignItems: 'center',
                 flexDirection: 'row',
                 borderRadius: 35,
-              }
-            }
-            }
+              },
+            }}
           />
         );
       }}
-      />
-  )
-    }
-  
+    />
+  );;
+};
 
 export default ChatInput;
-

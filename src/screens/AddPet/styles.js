@@ -7,35 +7,48 @@ export default StyleSheet.create({
     padding: 20,
     flex: 1,
     backgroundColor: palette.lightblue,
-    justifyContent: 'center',
+    //justifyContent: 'space-between',
   },
   button_container: {
     alignItems: 'center',
     margin: 16,
+    flexDirection: 'row',
   },
   button: {
-    width: '50%',
+    width: '30%',
     borderColor: palette.purple,
+    marginTop:5,
+  },
+  radioContainer: {
+    flexDirection: 'row',
+    //justifyContent: 'space-between',
+    width: '80%',
+    marginTop: 8, 
+    padding: 5,
   },
   radioGroup: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
-    marginTop: 10,
+    marginTop: 8,
+    width: '95%',
   },
   radio: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    //justifyContent: 'space-between',
   },
-  radioText: {
+  radioLabel: {
     fontSize: 16,
     color: palette.blue,
     fontWeight: '1000',
   },
+  radioTitle: {
+    fontSize: 17,
+    color: palette.orange,
+   fontWeight: 'bold',
+  },
   imageContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    //justifyContent: 'space-between',
     flexDirection: 'row',
+    marginTop: 1,
   },
 });
