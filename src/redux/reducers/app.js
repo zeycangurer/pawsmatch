@@ -57,6 +57,7 @@ const app = (state = initialState, action) => {
     case constants.SET_ACCOUNT:
       return {
         ...state,
+        user: {...state.user, [action.key]: action.value},
         [action.key]: action.value,
       };
 
@@ -90,7 +91,8 @@ const app = (state = initialState, action) => {
     case constants.RECEIVE_GET_PET:
       return {
         ...state,
-        pet: action.payload.pet,
+        myPet: action.payload.myPet,
+        user: action.payload.user,
       };
     case constants.REQUEST_UPDATE_PET:
       return {

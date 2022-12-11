@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 import {LoginStack} from './stacks/loginStack';
 import {HomeStack} from './stacks/homeStack';
+import {SignUpStack} from './stacks/signuptosignin';
 
 const Navigation = connect(
   ({app}) => ({app}),
@@ -13,7 +14,8 @@ const Navigation = connect(
 )(props => {
   return useMemo(
     () => <NavigationContainer>
-      { props.app.isSigningUp || props.app.isSigningIn ? <HomeStack /> : <LoginStack /> }
+      {props.app.isSigningIn ? <HomeStack /> :
+      props.app.isSigningUp ? <SignUpStack /> : <LoginStack/>}
     </NavigationContainer>,
     [props.app.isSigningUp, props.app.isSigningIn],
   );

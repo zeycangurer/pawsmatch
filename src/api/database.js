@@ -21,12 +21,22 @@ export const getPets = async () => {
   return allPets;
 };
 
-export const getPet = async id => {
-  const pet = await (await database().ref(`/Pets/${id}`).once('value')).val();
+export const getPet = async (payload, uid) => {
+  const pet = await (
+    await database().ref(`/UserPets/${uid}`).once('value')
+  ).val();
+  const pets = await (await database().ref('/Pets').once('value')).val();
+  console.log('pet', Object.values(pet));
   let myPets = [];
-  Object.keys(pet).map(key => {
-    myPets.push(pet[key]);
-  });
+  Object.values(pet).map(petKey =>
+    Object.keys(pets)
+      .filter(key => key === petKey)
+      .map(key => {
+        myPets.push(pets[key]);
+      }),
+  );
+
+  console.log('getPet', myPets);
   return myPets;
 };
 
