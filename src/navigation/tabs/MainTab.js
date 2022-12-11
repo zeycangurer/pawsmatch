@@ -26,8 +26,8 @@ const MainTab = () => {
             />
           );
         },
-        tabBarActiveTintColor: palette.orange,
-        tabBarInactiveTintColor: palette.yellow,
+        tabBarActiveTintColor: palette.purple,
+        tabBarInactiveTintColor: palette.blue,
         headerShown: false,
       })}>
       <Tab.Screen name="profile" component={ProfilePage} />

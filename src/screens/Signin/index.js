@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {View, Text} from 'react-native';
+import {View, Image, Text} from 'react-native';
 import {connect} from 'react-redux';
 import {signUp, setAccount} from '../../redux/actions';
 import styles from './styles';
-import {TextInput, Button} from 'react-native-paper';
+import {TextInput, Button, HelperText} from 'react-native-paper';
 import {palette} from '../../theme/palette';
 
 const mapStateToProps = states => ({app: states.app});
@@ -15,16 +15,9 @@ const SigninPage = connect(
 )(props => {
   const {app, dispatch} = props;
   const [repeatPassword, setRepeatPassword] = useState('');
-
-  // const checkRepeatPasswords = () => {
-  //   app.password !== repeatPassword
-  //     ?
-  //     : 'Şifreler eşleşti';
-  // };
-
   return (
     <View style={styles.container}>
-      <Text>SingupPage</Text>
+      <Image source={require('../../assets/icon.png')} style={styles.logo} />
       <View style={styles.input_container}>
         <TextInput
           mode="outlined"
@@ -36,6 +29,12 @@ const SigninPage = connect(
           value={app.email}
           onChangeText={d => dispatch(setAccount('email', d))}
         />
+        <HelperText
+          style={styles.error}
+          type="error"
+          visible={app.email === ''}>
+          E-mail is required
+        </HelperText>
         <TextInput
           mode="outlined"
           style={styles.input_area}
@@ -47,6 +46,12 @@ const SigninPage = connect(
           value={app.password}
           onChangeText={d => dispatch(setAccount('password', d))}
         />
+        <HelperText
+          style={styles.error}
+          type="error"
+          visible={app.password === ''}>
+          Password is required
+        </HelperText>
         <TextInput
           mode="outlined"
           style={styles.input_area}
@@ -55,11 +60,22 @@ const SigninPage = connect(
           activeOutlineColor={palette.blue}
           label="Repeat Password"
           secureTextEntry={true}
-          value={app.password}
-          onChangeText={d => dispatch(setAccount('password', d))}
+          value={repeatPassword}
+          onChangeText={d => setRepeatPassword(d)}
         />
+        <HelperText
+          style={styles.error}
+          type="error"
+          visible={app.password !== repeatPassword}>
+          Passwords do not match
+        </HelperText>
         <View style={styles.button_container}>
           <Button
+            disabled={
+              app.password !== repeatPassword ||
+              app.password === '' ||
+              app.email === ''
+            }
             style={styles.button}
             compact
             mode="contained"

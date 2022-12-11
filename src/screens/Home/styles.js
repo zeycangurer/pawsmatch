@@ -27,4 +27,14 @@ export default StyleSheet.create({
     backgroundColor: 'transparent',
     color: palette.blue,
   },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  emptyText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: palette.purple,
+  },
 });

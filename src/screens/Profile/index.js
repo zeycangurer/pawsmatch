@@ -4,11 +4,12 @@ import {Button} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
 import {connect} from 'react-redux';
 import {signOut} from '../../redux/actions';
-import {Avatar, Title, Subheading} from 'react-native-paper';
+import {Text, Title} from 'react-native-paper';
 import PetCard from '../../components/PetCard';
 import styles from './styles';
 import {palette} from '../../theme/palette';
 import {getPet, selectedPet} from '../../redux/actions';
+import auth from '@react-native-firebase/auth';
 
 const mapStateToProps = states => ({app: states.app});
 const mapDispatchToProps = dispatch => ({dispatch});
@@ -28,9 +29,13 @@ const ProfilePage = connect(
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Avatar.Text label="ZG" style={{backgroundColor: palette.blue}} />
-      <Title>Zeycan</Title>
-      <Subheading>z@gmail.com</Subheading>
+      <Text style={styles.title}>Welcome {auth().currentUser.email}!</Text>
+      <Button
+        onPress={() => {
+          navigation.navigate('addPet');
+        }}>
+        Add Pet
+      </Button>
       <Button
         onPress={() => {
           dispatch(signOut());
@@ -62,12 +67,6 @@ const ProfilePage = connect(
           );
         }}
       />
-      <Button
-        onPress={() => {
-          navigation.navigate('addPet');
-        }}>
-        Add Pet
-      </Button>
     </View>
   );
 });

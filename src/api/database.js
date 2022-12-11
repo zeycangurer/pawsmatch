@@ -21,8 +21,7 @@ export const getPets = async payload => {
   });
   return allPets.filter(
     pet =>
-      pet.breed === breed &&
-      pet.gender === gender &&
+      pet.gender !== gender &&
       pet.location === location &&
       pet.size === size &&
       pet.type === type &&
@@ -55,4 +54,3 @@ export const deletePet = async id => {
   const deletedPet = await database().ref(`/Pets/${id}`).remove();
   return deletedPet;
 };
-

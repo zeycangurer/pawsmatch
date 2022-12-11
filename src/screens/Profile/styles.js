@@ -7,11 +7,24 @@ export default StyleSheet.create({
     backgroundColor: palette.lightblue,
     paddingTop: 36,
   },
-  petsTitle: {
+  header: {
+    flexDirection: 'row',
+    alignSelf: 'center',
+    alignItems: 'center',
+  },
+  title: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: palette.orange,
-    marginTop: 50,
+    color: palette.blue,
+    alignSelf: 'center',
+  },
+  petsTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: palette.blue,
+    marginTop: 20,
+    marginBottom: 10,
+    alignSelf: 'center',
   },
   cardMale: {
     flex: 1,
