@@ -23,7 +23,7 @@ const LoginPage = connect(
           style={{color: 'red', textAlign: 'center', marginBottom: 16}}>
           {error}
         </Subheading>
-        
+
       )} */}
       <View style={styles.input_container}>
         <TextInput
