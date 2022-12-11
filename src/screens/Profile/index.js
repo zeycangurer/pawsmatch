@@ -18,13 +18,14 @@ const ProfilePage = connect(
   mapDispatchToProps,
 )(props => {
   const {app, dispatch} = props;
-  const {pets} = app;
+  const {myPet} = app;
   const getMyPet = () => {
     dispatch(getPet());
   };
   useEffect(() => {
     getMyPet();
   }, []);
+  console.log('mypets', myPet);
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
@@ -37,9 +38,9 @@ const ProfilePage = connect(
         }}>
         Sign Out
       </Button>
-      <Title style={styles.petsTitle}>Minik Dostların</Title>
+      <Title style={styles.petsTitle}>Your Pets</Title>
       <FlatList
-        data={pets}
+        data={myPet}
         renderItem={({item}) => {
           return (
             <View
