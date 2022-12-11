@@ -12,12 +12,13 @@ const HomePage = connect(
 )(props => {
   const {app, dispatch} = props;
   const {pets} = app;
-  const getPet = () => {
-    dispatch(getPets());
+  const getPet = item => {
+    dispatch(getPets(item));
   };
   useEffect(() => {
-    getPet();
-  }, []);
+    getPet(app.selectedPet);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [app.selectedPet]);
   return (
     <View style={styles.container}>
       <FlatList
