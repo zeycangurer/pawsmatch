@@ -25,6 +25,15 @@ export default StyleSheet.create({
     width: '90%',
     alignSelf: 'center',
     color: palette.blue,
-    marginBottom: 10,
+  },
+  logo: {
+    width: 150,
+    height: 150,
+    alignSelf: 'center',
+  },
+  error: {
+    fontSize: 12,
+    marginLeft: '5%',
+    fontWeight: 'bold',
   },
 });

@@ -1,8 +1,8 @@
 import * as constants from '../constants';
 
 const initialState = {
-  email: 'ceren@gmail.com',
-  password: 'ceren123',
+  email: '',
+  password: '',
   isSigningIn: false,
   isSigningUp: false,
   user: {},
@@ -22,7 +22,7 @@ const initialState = {
     description: '',
     image: '',
   },
-}
+};
 
 const app = (state = initialState, action) => {
   switch (action.type) {

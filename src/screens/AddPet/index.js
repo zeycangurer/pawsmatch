@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {ScrollView, View, Text, Alert} from 'react-native';
 import styles from './styles';
-import {TextInput, RadioButton, Button} from 'react-native-paper';
+import {TextInput, RadioButton, Button, HelperText} from 'react-native-paper';
 import {connect} from 'react-redux';
 import {setPet, addPet} from '../../redux/actions';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
@@ -72,63 +72,92 @@ const AddPetPage = connect(
         value={app.pet.name}
         onChangeText={text => dispatch(setPet('name', text))}
       />
-      <View style={styles.radioGroup}>
-        <RadioButton.Group
-          onValueChange={value => {
-            dispatch(setPet('type', value));
-            setPetType(value);
-          }}
-          value={(app.pet.type, petType)}>
-          <Text style={styles.radioTitle}>Hangisi ?</Text>
-          <View>
-            <View style={styles.radioContainer}>
-              <Text style={styles.radioLabel}>Dog</Text>
-              <RadioButton value="dog" />
-            </View>
-            <View style={styles.radioContainer}>
-              <Text style={styles.radioLabel}>Cat</Text>
-              <RadioButton value="cat" />
-            </View>
+      <HelperText
+        style={styles.error}
+        type="error"
+        visible={app.pet.name === ''}>
+        Please enter a name
+      </HelperText>
+      <RadioButton.Group
+        onValueChange={value => {
+          dispatch(setPet('type', value));
+          setPetType(value);
+        }}
+        value={(app.pet.type, petType)}>
+        <Text style={styles.radioTitle}>My pet is a ...</Text>
+        <View style={styles.radioGroup}>
+          <View style={styles.radioContainer}>
+            <Text style={styles.radioLabel}>Dog</Text>
+            <RadioButton value="dog" />
           </View>
-        </RadioButton.Group>
-        <RadioButton.Group
-          onValueChange={value => {
-            dispatch(setPet('gender', value));
-            setPetGender(value);
-          }}
-          value={(app.pet.gender, petGender)}>
-          <Text style={styles.radioTitle}>Cinsiyet</Text>
-          <View>
-            <View style={styles.radioContainer}>
-              <Text style={styles.radioLabel}>Female</Text>
-              <RadioButton value="female" />
-            </View>
-            <View style={styles.radioContainer}>
-              <Text style={styles.radioLabel}>Male</Text>
-              <RadioButton value="male" />
-            </View>
+          <View style={styles.radioContainer}>
+            <Text style={styles.radioLabel}>Cat</Text>
+            <RadioButton value="cat" />
           </View>
-        </RadioButton.Group>
-      </View>
+        </View>
+      </RadioButton.Group>
+      <HelperText
+        style={styles.error}
+        type="error"
+        visible={app.pet.type === ''}>
+        Please select a type
+      </HelperText>
+      <RadioButton.Group
+        onValueChange={value => {
+          dispatch(setPet('gender', value));
+          setPetGender(value);
+        }}
+        value={(app.pet.gender, petGender)}>
+        <Text style={styles.radioTitle}>Gender is ...</Text>
+        <View style={styles.radioGroup}>
+          <View style={styles.radioContainer}>
+            <Text style={styles.radioLabel}>Female</Text>
+            <RadioButton value="female" />
+          </View>
+          <View style={styles.radioContainer}>
+            <Text style={styles.radioLabel}>Male</Text>
+            <RadioButton value="male" />
+          </View>
+        </View>
+      </RadioButton.Group>
+      <HelperText
+        style={styles.error}
+        type="error"
+        visible={app.pet.gender === ''}>
+        Please select the gender
+      </HelperText>
       <TextInput
         label="Breed"
         mode="outlined"
         value={app.pet.breed}
         onChangeText={text => dispatch(setPet('breed', text))}
       />
+      <HelperText
+        style={styles.error}
+        type="error"
+        visible={app.pet.breed === ''}>
+        Please enter a breed
+      </HelperText>
       <TextInput
         label="Age"
         mode="outlined"
         value={app.pet.age}
         onChangeText={text => dispatch(setPet('age', text))}
       />
-      <View style={styles.radioGroup}>
-        <RadioButton.Group
-          onValueChange={value => {
-            dispatch(setPet('size', value));
-            setPetSize(value);
-          }}
-          value={(app.pet.size, petSize)}>
+      <HelperText
+        style={styles.error}
+        type="error"
+        visible={app.pet.age === ''}>
+        Please enter an age
+      </HelperText>
+      <RadioButton.Group
+        onValueChange={value => {
+          dispatch(setPet('size', value));
+          setPetSize(value);
+        }}
+        value={(app.pet.size, petSize)}>
+        <Text style={styles.radioTitle}>Size is ...</Text>
+        <View style={styles.radioGroup}>
           <View style={styles.radioContainer}>
             <Text style={styles.radioLabel}>Small</Text>
             <RadioButton value="Small" />
@@ -141,16 +170,28 @@ const AddPetPage = connect(
             <Text style={styles.radioLabel}>Large</Text>
             <RadioButton value="Large" />
           </View>
-        </RadioButton.Group>
-      </View>
+        </View>
+      </RadioButton.Group>
+      <HelperText
+        style={styles.error}
+        type="error"
+        visible={app.pet.size === ''}>
+        Please select the size
+      </HelperText>
       <TextInput
         label="Location"
         mode="outlined"
         value={app.pet.location}
         onChangeText={text => dispatch(setPet('location', text))}
       />
-      <Text>Add Image</Text>
-      <View style={styles.imageContainer}>
+      <HelperText
+        style={styles.error}
+        type="error"
+        visible={app.pet.location === ''}>
+        Please enter a location
+      </HelperText>
+      <Text style={styles.radioTitle}>Add Image</Text>
+      <View style={styles.button_container}>
         <Button onPress={handleCamera} mode="contained" style={styles.button}>
           Camera
         </Button>
@@ -158,6 +199,12 @@ const AddPetPage = connect(
           Gallery
         </Button>
       </View>
+      <HelperText
+        style={styles.error}
+        type="error"
+        visible={app.pet.image === ''}>
+        Please add an image
+      </HelperText>
       <TextInput
         label="Description"
         mode="outlined"
@@ -165,9 +212,22 @@ const AddPetPage = connect(
         onChangeText={text => dispatch(setPet('description', text))}
       />
       <Button
+        disabled={
+          app.pet.name === '' ||
+          app.pet.type === '' ||
+          app.pet.gender === '' ||
+          app.pet.breed === '' ||
+          app.pet.age === '' ||
+          app.pet.size === '' ||
+          app.pet.location === '' ||
+          app.pet.image === ''
+        }
         mode="contained"
         onPress={() => dispatch(addPet()) && props.navigation.navigate('home')}
-        style={styles.button}>
+        style={
+          (styles.button,
+          {alignSelf: 'center', marginTop: 10, marginBottom: 40})
+        }>
         Add Pet
       </Button>
     </ScrollView>

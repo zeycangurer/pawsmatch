@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
-import {View, Text, Button, FlatList, Image} from 'react-native';
+import {View, Text, FlatList} from 'react-native';
 import styles from './styles';
-import {palette} from '../../theme/palette';
 import {connect} from 'react-redux';
 import {getPets} from '../../redux/actions';
 import PetCard from '../../components/PetCard';
@@ -36,6 +35,16 @@ const HomePage = connect(
                 location={item.location}
                 image={item.image}
               />
+            </View>
+          );
+        }}
+        ListEmptyComponent={() => {
+          return (
+            <View style={styles.emptyContainer}>
+              <Text style={styles.emptyText}>
+                Please select the pet from the profile. If you selected a pet no
+                matches were found.
+              </Text>
             </View>
           );
         }}

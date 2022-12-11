@@ -3,7 +3,7 @@ import {palette} from '../../theme/palette';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: palette.lightgrey,
+    backgroundColor: palette.white,
     borderRadius: 20,
     padding: 16,
     margin: 8,

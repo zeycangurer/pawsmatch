@@ -1,7 +1,6 @@
 import {View, Text, Image} from 'react-native';
 import React from 'react';
 import styles from './styles';
-import {palette} from '../../theme/palette';
 
 const PetCard = props => {
   return (

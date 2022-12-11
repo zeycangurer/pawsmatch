@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Image} from 'react-native';
 import {connect} from 'react-redux';
 import {setAccount, signIn} from '../../redux/actions';
-import {TextInput, Button, Subheading} from 'react-native-paper';
+import {TextInput, Button, HelperText} from 'react-native-paper';
 import styles from './styles';
 import {palette} from '../../theme/palette';
 import {useNavigation} from '@react-navigation/native';
@@ -18,13 +18,7 @@ const LoginPage = connect(
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      {/* {!!error && (
-        <Subheading
-          style={{color: 'red', textAlign: 'center', marginBottom: 16}}>
-          {error}
-        </Subheading>
-
-      )} */}
+      <Image source={require('../../assets/icon.png')} style={styles.logo} />
       <View style={styles.input_container}>
         <TextInput
           mode="outlined"
@@ -36,6 +30,12 @@ const LoginPage = connect(
           value={app.email}
           onChangeText={d => dispatch(setAccount('email', d))}
         />
+        <HelperText
+          style={styles.error}
+          type="error"
+          visible={app.email === ''}>
+          E-mail is required
+        </HelperText>
         <TextInput
           mode="outlined"
           style={styles.input_area}
@@ -47,10 +47,17 @@ const LoginPage = connect(
           value={app.password}
           onChangeText={d => dispatch(setAccount('password', d))}
         />
+        <HelperText
+          style={styles.error}
+          type="error"
+          visible={app.password === ''}>
+          Password is required
+        </HelperText>
 
         <View style={styles.button_container}>
           <Button
             style={styles.button}
+            disabled={app.email === '' || app.password === ''}
             mode="contained"
             onPress={() => dispatch(signIn())}>
             Sign In
