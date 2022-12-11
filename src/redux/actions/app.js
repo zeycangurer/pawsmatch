@@ -68,9 +68,23 @@ export const addPet = payload => async (dispatch, getState) => {
 
 export const getPets = payload => async dispatch => {
   dispatch({type: constants.REQUEST_GET_PETS});
+  dispatch({type: constants.SELECTED_PET, payload: {selectedPet: payload}});
   try {
-    const pets = await database.getPets();
+    const pets = await database.getPets(payload);
     dispatch({type: constants.RECEIVE_GET_PETS, payload: {pets}});
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const selectedPet = payload => async dispatch => {
+  const select = dispatch({
+    type: constants.SELECTED_PET,
+    payload: {selectedPet: payload},
+  });
+  console.log(select);
+  try {
+    return select;
   } catch (error) {
     console.log(error);
   }
@@ -81,7 +95,6 @@ export const getPet = payload => async dispatch => {
   dispatch({type: constants.REQUEST_GET_PET});
   try {
     const myPet = await database.getPet(payload, user);
-    console.log('action', myPet);
     dispatch({type: constants.RECEIVE_GET_PET, payload: {myPet}});
   } catch (error) {
     console.log(error);
