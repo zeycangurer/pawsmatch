@@ -4,8 +4,7 @@ import * as database from '../../api/database';
 
 export const setAccount = (key, value) => ({
   type: constants.SET_ACCOUNT,
-  key,
-  value,
+  payload: {key, value},
 });
 
 export const signIn = payload => async (dispatch, getState) => {
@@ -13,6 +12,12 @@ export const signIn = payload => async (dispatch, getState) => {
   dispatch({type: constants.REQUEST_SIGN_IN});
   try {
     await auth.signIn(email, password);
+    const user = await auth.getUserInfo();
+    console.log(user);
+    dispatch({
+      type: constants.REQUEST_SIGN_IN,
+      payload: user,
+    });
   } catch (error) {
     console.log(error);
   }
@@ -23,6 +28,12 @@ export const signUp = payload => async (dispatch, getState) => {
   dispatch({type: constants.REQUEST_SIGN_UP});
   try {
     await auth.signUp(email, password);
+    const user = await auth.getUserInfo();
+    console.log(user);
+    dispatch({
+      type: constants.REQUEST_SIGN_UP,
+      payload: user,
+    });
   } catch (error) {
     console.log(error);
   }
@@ -46,10 +57,11 @@ export const setPet = (key, value) => ({
 
 export const addPet = payload => async (dispatch, getState) => {
   const pet = getState().app.pet;
-  console.log(pet);
+  const user = auth.getUserInfo();
+  console.log(pet, user);
   dispatch({type: constants.REQUEST_ADD_PET});
   try {
-    await database.addPet(pet);
+    await database.addPet(pet, user);
   } catch (error) {
     console.log(error);
   }

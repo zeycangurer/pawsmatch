@@ -1,12 +1,14 @@
 import database from '@react-native-firebase/database';
 
-export const addPet = async pet => {
-  const newPet = await database()
-    .ref('/Pets')
-    .push({
-      ...pet,
-    })
-    .then(() => console.log('Data set.', pet));
+export const addPet = async (pet, uid) => {
+  const newPet = database().ref('/Pets').push();
+  await newPet.set(pet);
+  const key = newPet.key;
+  await database()
+    .ref(`/UserPets/${uid}`)
+    .push()
+    .set(key)
+    .then(() => console.log('Data set with user.'));
   return newPet;
 };
 
@@ -20,8 +22,12 @@ export const getPets = async () => {
 };
 
 export const getPet = async id => {
-  const pet = await database().ref(`/Pets/${id}`).once('value');
-  return pet.val();
+  const pet = await (await database().ref(`/Pets/${id}`).once('value')).val();
+  let myPets = [];
+  Object.keys(pet).map(key => {
+    myPets.push(pet[key]);
+  });
+  return myPets;
 };
 
 export const updatePet = async (id, pet) => {
