@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, Alert} from 'react-native';
+import {ScrollView, View, Text, Alert} from 'react-native';
 import styles from './styles';
 import {TextInput, RadioButton, Button} from 'react-native-paper';
 import {connect} from 'react-redux';
@@ -64,7 +64,7 @@ const AddPetPage = connect(
     });
   };
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.title}>Add Pet</Text>
       <TextInput
         label="Name"
@@ -72,36 +72,44 @@ const AddPetPage = connect(
         value={app.pet.name}
         onChangeText={text => dispatch(setPet('name', text))}
       />
-      <RadioButton.Group
-        onValueChange={value => {
-          dispatch(setPet('type', value));
-          setPetType(value);
-        }}
-        value={(app.pet.type, petType)}>
-        <View style={styles.radioContainer}>
-          <Text style={styles.radioLabel}>Dog</Text>
-          <RadioButton value="dog" />
-        </View>
-        <View style={styles.radioContainer}>
-          <Text style={styles.radioLabel}>Cat</Text>
-          <RadioButton value="cat" />
-        </View>
-      </RadioButton.Group>
-      <RadioButton.Group
-        onValueChange={value => {
-          dispatch(setPet('gender', value));
-          setPetGender(value);
-        }}
-        value={(app.pet.gender, petGender)}>
-        <View style={styles.radioContainer}>
-          <Text style={styles.radioLabel}>Female</Text>
-          <RadioButton value="female" />
-        </View>
-        <View style={styles.radioContainer}>
-          <Text style={styles.radioLabel}>Male</Text>
-          <RadioButton value="male" />
-        </View>
-      </RadioButton.Group>
+      <View style={styles.radioGroup}>
+        <RadioButton.Group
+          onValueChange={value => {
+            dispatch(setPet('type', value));
+            setPetType(value);
+          }}
+          value={(app.pet.type, petType)}>
+          <Text style={styles.radioTitle}>Hangisi ?</Text>
+          <View>
+            <View style={styles.radioContainer}>
+              <Text style={styles.radioLabel}>Dog</Text>
+              <RadioButton value="dog" />
+            </View>
+            <View style={styles.radioContainer}>
+              <Text style={styles.radioLabel}>Cat</Text>
+              <RadioButton value="cat" />
+            </View>
+          </View>
+        </RadioButton.Group>
+        <RadioButton.Group
+          onValueChange={value => {
+            dispatch(setPet('gender', value));
+            setPetGender(value);
+          }}
+          value={(app.pet.gender, petGender)}>
+          <Text style={styles.radioTitle}>Cinsiyet</Text>
+          <View>
+            <View style={styles.radioContainer}>
+              <Text style={styles.radioLabel}>Female</Text>
+              <RadioButton value="female" />
+            </View>
+            <View style={styles.radioContainer}>
+              <Text style={styles.radioLabel}>Male</Text>
+              <RadioButton value="male" />
+            </View>
+          </View>
+        </RadioButton.Group>
+      </View>
       <TextInput
         label="Breed"
         mode="outlined"
@@ -114,25 +122,27 @@ const AddPetPage = connect(
         value={app.pet.age}
         onChangeText={text => dispatch(setPet('age', text))}
       />
-      <RadioButton.Group
-        onValueChange={value => {
-          dispatch(setPet('size', value));
-          setPetSize(value);
-        }}
-        value={(app.pet.size, petSize)}>
-        <View style={styles.radioContainer}>
-          <Text style={styles.radioLabel}>Small</Text>
-          <RadioButton value="Small" />
-        </View>
-        <View style={styles.radioContainer}>
-          <Text style={styles.radioLabel}>Medium</Text>
-          <RadioButton value="Medium" />
-        </View>
-        <View style={styles.radioContainer}>
-          <Text style={styles.radioLabel}>Large</Text>
-          <RadioButton value="Large" />
-        </View>
-      </RadioButton.Group>
+      <View style={styles.radioGroup}>
+        <RadioButton.Group
+          onValueChange={value => {
+            dispatch(setPet('size', value));
+            setPetSize(value);
+          }}
+          value={(app.pet.size, petSize)}>
+          <View style={styles.radioContainer}>
+            <Text style={styles.radioLabel}>Small</Text>
+            <RadioButton value="Small" />
+          </View>
+          <View style={styles.radioContainer}>
+            <Text style={styles.radioLabel}>Medium</Text>
+            <RadioButton value="Medium" />
+          </View>
+          <View style={styles.radioContainer}>
+            <Text style={styles.radioLabel}>Large</Text>
+            <RadioButton value="Large" />
+          </View>
+        </RadioButton.Group>
+      </View>
       <TextInput
         label="Location"
         mode="outlined"
@@ -160,7 +170,7 @@ const AddPetPage = connect(
         style={styles.button}>
         Add Pet
       </Button>
-    </View>
+    </ScrollView>
   );
 });
 

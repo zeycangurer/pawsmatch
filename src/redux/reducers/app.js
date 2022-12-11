@@ -20,6 +20,17 @@ const initialState = {
     description: '',
     image: '',
   },
+  
+  /////////  CHAT  /////////
+  chats: [],
+  chat: {
+    userId: '',
+    otherPerson: {
+      date: '',
+      message: '',
+      sender: '',
+    },
+  },
 };
 
 const app = (state = initialState, action) => {
@@ -87,6 +98,11 @@ const app = (state = initialState, action) => {
     case constants.REQUEST_DELETE_PET:
       return {
         ...state,
+      };
+    case constants.REQUEST_ADD_CHAT:
+      return {
+        ...state,
+        isAddingMessage: true,
       };
 
     /////////  PETS  /////////
