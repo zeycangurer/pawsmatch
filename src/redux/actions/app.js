@@ -106,14 +106,3 @@ export const deletePet = payload => async dispatch => {
     console.log(error);
   }
 };
-
-export const chats = payload => async (dispatch, getState) => {
-  const chat = getState().app.chat;
-  console.log(chat);
-  dispatch({type: constants.REQUEST_ADD_CHAT});
-  try {
-    await database.chats(chat);
-  } catch (error) {
-    console.log(error);
-  }
-};

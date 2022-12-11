@@ -50,12 +50,3 @@ export const deletePet = async id => {
   return deletedPet;
 };
 
-export const chats = async chat => {
-  const newChat = await database()
-    .ref('/Chats')
-    .push({
-      ...chat,
-    })
-    .then(() => console.log('Data set.', chat));
-  return newChat;
-};
