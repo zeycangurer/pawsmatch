@@ -18,7 +18,7 @@ export default StyleSheet.create({
     flex: 1,
     borderRadius: 4,
     justifyContent: 'center',
-    backgroundColor: palette.purple,
+    backgroundColor: palette.pink,
     marginBottom: 8,
   },
   text: {

@@ -9,4 +9,5 @@ export const palette = {
   darkgrey: '#222222',
   nilegreen: '#CDFCF6',
   white: '#FFFFFF',
+  pink: '#FFC0CB',
 };
