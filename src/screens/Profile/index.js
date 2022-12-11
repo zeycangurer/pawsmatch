@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, FlatList} from 'react-native';
+import {View, FlatList, TouchableOpacity} from 'react-native';
 import {Button} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
 import {connect} from 'react-redux';
@@ -8,7 +8,7 @@ import {Avatar, Title, Subheading} from 'react-native-paper';
 import PetCard from '../../components/PetCard';
 import styles from './styles';
 import {palette} from '../../theme/palette';
-import {getPet} from '../../redux/actions';
+import {getPet, selectedPet} from '../../redux/actions';
 
 const mapStateToProps = states => ({app: states.app});
 const mapDispatchToProps = dispatch => ({dispatch});
@@ -25,7 +25,6 @@ const ProfilePage = connect(
   useEffect(() => {
     getMyPet();
   }, []);
-  console.log('mypets', myPet);
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
@@ -43,18 +42,23 @@ const ProfilePage = connect(
         data={myPet}
         renderItem={({item}) => {
           return (
-            <View
-              style={
-                item.gender === 'female' ? styles.cardFemale : styles.cardMale
-              }>
-              <PetCard
-                name={item.name}
-                breed={item.breed}
-                size={item.size}
-                location={item.location}
-                image={item.image}
-              />
-            </View>
+            <TouchableOpacity
+              onPress={() => {
+                dispatch(selectedPet(item));
+              }}>
+              <View
+                style={
+                  item.gender === 'female' ? styles.cardFemale : styles.cardMale
+                }>
+                <PetCard
+                  name={item.name}
+                  breed={item.breed}
+                  size={item.size}
+                  location={item.location}
+                  image={item.image}
+                />
+              </View>
+            </TouchableOpacity>
           );
         }}
       />

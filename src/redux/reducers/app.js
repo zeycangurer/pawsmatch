@@ -9,6 +9,7 @@ const initialState = {
 
   /////////  PETS  /////////
 
+  selectedPet: {},
   pets: [],
   pet: {
     name: '',
@@ -71,6 +72,11 @@ const app = (state = initialState, action) => {
       return {
         ...state,
         pets: action.payload.pets,
+      };
+    case constants.SELECTED_PET:
+      return {
+        ...state,
+        selectedPet: action.payload.selectedPet,
       };
     case constants.REQUEST_GET_PET:
       return {

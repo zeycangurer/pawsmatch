@@ -12,13 +12,22 @@ export const addPet = async (pet, uid) => {
   return newPet;
 };
 
-export const getPets = async () => {
+export const getPets = async payload => {
   const pets = await (await database().ref('/Pets').once('value')).val();
+  const {breed, gender, location, size, type, id} = payload;
   let allPets = [];
   Object.keys(pets).map(key => {
-    allPets.push(pets[key]);
+    allPets.push({...pets[key], id: key});
   });
-  return allPets;
+  return allPets.filter(
+    pet =>
+      pet.breed === breed &&
+      pet.gender === gender &&
+      pet.location === location &&
+      pet.size === size &&
+      pet.type === type &&
+      pet.id !== id,
+  );
 };
 
 export const getPet = async (payload, uid) => {
@@ -26,17 +35,14 @@ export const getPet = async (payload, uid) => {
     await database().ref(`/UserPets/${uid}`).once('value')
   ).val();
   const pets = await (await database().ref('/Pets').once('value')).val();
-  console.log('pet', Object.values(pet));
   let myPets = [];
   Object.values(pet).map(petKey =>
     Object.keys(pets)
       .filter(key => key === petKey)
       .map(key => {
-        myPets.push(pets[key]);
+        myPets.push({...pets[key], id: petKey});
       }),
   );
-
-  console.log('getPet', myPets);
   return myPets;
 };
 
