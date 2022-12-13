@@ -57,7 +57,7 @@ const AddPetPage = connect(
         console.log('User tapped custom button: ', response.customButton);
         Alert.alert('Error', 'Please select an image');
       } else {
-        source = {uri: response};
+        source = {uri: response.assets[0].uri};
         console.log('source', source.uri);
         dispatch(setPet('image', source.uri));
       }
