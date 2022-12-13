@@ -12,7 +12,7 @@ If you are tired of wasting time by posting ads on various platforms or applying
 This app is developed with React Native.
 
 - React Navigation
-- Redux Thunk
+- Redux
 - Firebase ( Authentication/ Realtime Database )
 - React Native Image Picker
 - React Native Vector Icons
